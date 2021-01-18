@@ -1,4 +1,4 @@
-package src.rocks.ditto.leetcode;
+package src.rocks.ditto.leetcode.medium;
 
 import java.awt.image.AreaAveragingScaleFilter;
 import java.util.*;
