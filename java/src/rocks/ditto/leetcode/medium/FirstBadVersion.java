@@ -11,7 +11,7 @@ public class FirstBadVersion {
         // 二分法
         while (left < right){
             // 防止计算溢出
-            int mid = left + (right- left) / 2;
+            int mid = left + (right - left) / 2;
             // 能够满足的话
             if (isBadVersion(mid)){
                 right = mid;
