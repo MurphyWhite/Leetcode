@@ -23,6 +23,6 @@ public class ConvertToTitle {
 
     public static void main(String[] args) {
         ConvertToTitle convertToTitle = new ConvertToTitle();
-        convertToTitle.convertToTitle(27);
+        convertToTitle.convertToTitle(676);
     }
 }
