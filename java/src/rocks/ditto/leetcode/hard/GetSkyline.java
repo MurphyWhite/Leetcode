@@ -57,7 +57,7 @@ public class GetSkyline {
             int cur = priorityQueue.peek();
             if (cur != prev) {
                 List<Integer> list = new ArrayList<>();
-                list.add(point);
+                list.add(x);
                 list.add(cur);
                 ans.add(list); 
                 prev = cur;
