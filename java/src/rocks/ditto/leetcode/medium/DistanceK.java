@@ -1,8 +1,13 @@
 package src.rocks.ditto.leetcode.medium;
 
-import java.awt.image.AreaAveragingScaleFilter;
+import src.rocks.ditto.leetcode.common.TreeNode;
+
 import java.util.*;
 
+/**
+ * 863. 二叉树中所有距离为 K 的结点
+ * https://leetcode-cn.com/problems/all-nodes-distance-k-in-binary-tree/
+ */
 public class DistanceK {
 
     /**
@@ -67,19 +72,4 @@ public class DistanceK {
         }
     }
 
-    /**
-     * Definition for a binary tree node.
-     */
-    class TreeNode {
-
-        int val;
-
-        TreeNode left;
-
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
 }
