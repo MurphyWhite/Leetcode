@@ -1,6 +1,5 @@
 package src.rocks.ditto.leetcode.easy;
 
-import com.sun.source.tree.Tree;
 import src.rocks.ditto.leetcode.common.TreeNode;
 
 import java.util.ArrayList;
