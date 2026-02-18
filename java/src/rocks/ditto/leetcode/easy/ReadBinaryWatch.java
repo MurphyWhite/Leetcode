@@ -17,6 +17,7 @@ public class ReadBinaryWatch {
     static {
         for (int i = 0; i <= 11 ; i++){
             for (int j=0; j <= 59; j++){
+                // 标记位数
                 int rowCnt = Integer.bitCount(i) + Integer.bitCount(j);
                 List<String> result = resultMap.getOrDefault(rowCnt, new ArrayList<>());
                 result.add(i + ":" + (j <= 9 ? "0" + j : j));
