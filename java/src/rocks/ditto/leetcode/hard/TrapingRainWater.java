@@ -16,12 +16,15 @@ public class TrapingRainWater {
         if (n == 0) {
             return 0;
         }
+
+        // from 0 -> n-1, what is the leftMax
         int[] leftMax = new int[n];
         leftMax[0] = height[0];
         for (int i = 1; i < n; i++){
             leftMax[i] = Math.max(leftMax[i-1], height[i]);
         }
 
+        // from n-1 -> 0, what is the rightMax
         int[] rightMax = new int[n];
         rightMax[n-1] = height[n-1];
         for (int i = n-2; i >= 0; i--){
@@ -29,6 +32,7 @@ public class TrapingRainWater {
         }
 
         int ans = 0;
+        // how much water position[i] can store the
         for (int i = 0; i < n ; i++){
             ans += Math.min(leftMax[i], rightMax[i]) - height[i];
         }
