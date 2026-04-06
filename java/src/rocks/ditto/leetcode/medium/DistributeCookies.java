@@ -1,4 +1,4 @@
-package src.rocks.ditto.leetcode.hard;
+package src.rocks.ditto.leetcode.medium;
 
 /**
  * 2305. Fair Distribution of Cookies
