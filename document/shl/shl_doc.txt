@@ -1,0 +1,422 @@
+1	There are N people living in a state. In this state, people concatenate their town name before their first name. Write an algorithm to find the name of the town of the given N people where the name of the town is the common substring and has the maximum length.
+	Basic test cases:
+1 Sample
+2: Smallest string is the common prefix 2
+Replica 2: Smallest string is the common prefix
+3 All different strings
+4 Single character is repeated in all the strings
+5 All strings are same 6 Single string
+Advanced test cases:
+1 Sample 1: jumbled order strings
+2 Replica 1: jumbled order strings
+3 All strings of the list are same but all are different in case
+4 All strings are same but last string is partially different
+5 All string are same but differ at last position.
+6 Strings in list are of large size, size of every string > 26
+Edge Test Cases:
+1 Size of list is zero
+	import java.util.*;
+import java.lang.*;
+import java.io.*;
+/*
+*
+*/
+public class Solution
+{
+public static String getTown(String[] peopleNames)
+{
+String answer = "";
+
+if(peopleNames==null || peopleNames.length==0){
+return answer;
+}
+
+for(int i=0;i<peopleNames.length;i++){
+peopleNames[i]=peopleNames[i].toLowerCase();
+}
+
+String prefix=peopleNames[0];
+
+for(int i=1;i<peopleNames.length;i++){
+while(!peopleNames[i].startsWith(prefix)){
+prefix=prefix.substring(0,prefix.length()-1);
+
+if(prefix.isEmpty()){
+return "";
+}
+}
+}
+return prefix;
+}
+
+public static void main(String[] args){
+Scanner in = new Scanner(System.in);
+//input for peopleNames
+int peopleNames_size = in.nextInt();
+String peopleNames[] = new String[peopleNames_size];
+
+for(int idx = 0; idx < peopleNames_size; idx++){
+peopleNames[idx] = in.next();
+}
+
+String result = getTown(peopleNames);
+System.out.print(result);
+}
+}
+
+2	Systems that run multiple jobs concurrently on a single CPU have a round-robin scheduling process for choosing which tasks to run, at what time to run them, and how to break them up. This round-robin scheduling technique runs each job for a fixed amount of time before switching to the next job. The waiting time for a job is the total time that it spends waiting to be run. Each job arrives in the queue at a particular time and takes a certain amount of time to run. When a new job arrives, it is scheduled to run after the jobs that are already waiting for the CPU. Jobs that arrive at the same time are processed in the order they are found in the arrival array. You may assume that the jobs arrive in such frequency that the CPU is never idle. A list of job submissions is given.
+
+Write an algorithm to determine the average waiting time for all the jobs using the round-robin scheduling process.
+	Basic:
+1 Sample 2: Pair of processes finishes before the execution of next pair
+2 Time slice is greater than all jobs so executed in given order
+3 Some jobs have same execution time and some arrived at same time
+4 Single job only
+5 Time slice is same as execution time of all jobs
+6 Time slice is equal or greater than the execution time of jobs so jobs are
+executed in order as they arrived
+
+Advanced:
+1 Sample 1: Jobs are executed as they arrived
+2 First job has large execution time
+3 Large time slice
+4 Some of the jobs have same execution time
+5 Replica of Sample 2: Pair of processes finishes before the execution of next pair
+6 Replica of Sample 1: Jobs are executed as they arrived
+7 Jobs arrived at different time and has same execution time
+8 Duplicate: Time slice is greater than all jobs so executed in given order
+
+Edge:
+1 All jobs arrived at same time and all have same execution time
+2 Single job and large execution time
+	import java.util.*;
+import java.lang.*;
+import java.io.*;
+/*
+* arrivalTimeList is the list representing the arrival time of the task
+s.
+runTimeList is the list representing the run time of the tasks.
+timeSlot is the fixed amount of time required by the round robin sc
+heduling process.
+*/
+public class Solution
+{
+public static float waitingTimeRR(int[] arrivalTimeList, int[] runTi
+meList, int timeSlot){
+//Write code here
+}
+
+
+public static void main(String[] args){
+Scanner in = new Scanner(System.in);
+//input for arrivalTimeList
+int arrivalTimeList_size = in.nextInt();
+int arrivalTimeList[] = new int[arrivalTimeList_size];
+
+for(int idx = 0; idx < arrivalTimeList_size; idx++){
+arrivalTimeList[idx] = in.nextInt();
+}
+
+//input for runTimeList
+int runTimeList_size = in.nextInt();
+int runTimeList[] = new int[runTimeList_size];
+
+for(int idx = 0; idx < runTimeList_size; idx++){
+runTimeList[idx] = in.nextInt();
+}
+
+// input for timeSlot
+int timeSlot = in.nextInt();
+float result = waitingTimeRR(arrivalTimeList, runTimeList, time
+Slot);
+System.out.print(result);
+}
+}
+
+#	Question
+3	Ethan is the leader of a team with N members. He has assigned an error score to each member in his team based on the bugs that he has found in that particular team member’s task. Because the error score has increased to a significantly large value, he wants to give all the team members a chance to improve their error scores, thereby improving their reputation in the organization. He introduces a new rule that whenever a team member completes a project successfully, the error score of that member decreases by a count P and the error score of all the other team members whose score is greater than zero decreases by a count Q.
+
+Write an algorithm to help Ethan find the minimum number of projects that the team must complete in order to make the error score of all the team members zero.
+4	Theon is an energy engineer. His job is to transport oil from the base refinery to the main storage units through a network of pipes. The network is in the form of a tree, where the base refinery is the root and the main storage units are the leaves. The pipes are connected to the storage units via internal connecting stations. The pipes can have different transfer rates [liter of oil per unit of time]. He wishes to determine the maximum amount of oil that can be transported via the network at any given time.
+
+Write an algorithm to help Theon find the maximum amount of oil that can be transported via the network at any given time.
+5	You are given a list of N unique positive numbers ranging from 0 to (N -1).
+Write an algorithm to replace the value of each number with its corresponding index value in the list.
+6	Dr. Jackson, a researcher, wishes to perform an experiment. He has a variety of toxic chemicals. Each chemical has some vapor rate. When two chemicals are mixed, then the vapor rate of the mixture is the multiplication of their respective vapor rates.
+Dr. Jackson picks two equal-sized sets of non-overlapping, consecutively-placed chemicals from a series of chemicals in his lab. He reverses the positions of the chemicals in the second set. He then mixes each chemical from the first set with the correspondingly-placed chemical of the second set. The total vapor rate at the end of the experiment is the sum of the products of the respective vapor rates of the chemicals that he mixed from both sets. If the total vapor rate is negative, he will not pick any set.
+
+Write an algorithm to find the maximum vapor rate obtainable after the experiment.
+7	You are given a list of integers of size N.
+
+Write an algorithm to sort the first K elements (from list[0] to list[K-1]) of the list in ascending order and the remaining (list[K] to list[N-1]) elements in descending order.
+8	The manager of a supermarket wishes to hold an event at which he will distribute gift baskets to lucky customers. Each gift basket contains a pair of products. Each basket contains different product pairs, but the overall value of the baskets may be the same. There are N types of products and each product has a price. The gift baskets will awarded to the customers that pick a product pair that has a difference in price equal to the given integer value K.
+
+Write an algorithm to help the Manager find the total numbers of lucky customers who will win a gift basket.
+9	Charlie has a magic mirror that shows the right-rotated versions of a given word. To generate different right rotations of a word, the word is written in a circle in a clockwise order and read it starting from any given character in a clockwise order until all the characters are covered. For example, in the word "sample", if we start with 'p', we get the right rotated word as "plesam".
+
+Write an algorithm to output 1 if the word1 is a right rotation of word2 otherwise output -1.
+10	John misses his bus and has to walk all his way from home to school. The distance between his school and home is D units. He starts his journey with an initial energy of K units. His energy decreases by 1 unit for every unit of distance walked. On his way to school, there are N juice stalls. Each stall has a specific amount of juice in liters. His energy increases by 1 unit for every liter of juice he consumes. Note that in order to keep him walking he should have nonzero energy.
+
+Write an algorithm to help John figure out the minimum number of juice stalls at which he should stop to successfully reach the school. In case he can't reach the school, the output will be -1.
+11	In a car racing game, the participating cars must be registered online prior to the game. A car is assigned a registration number that is stored in a database. The registration number consists of digits from 0-9. The registration number can be positive or negative. A negative registration number denotes that the car is already registered online whereas a positive registration number denotes that the car is a newly registered car. Before the game starts, the system automatically assigns a track number to each car. The track number is the smallest permutation of the car registration number and never starts with zero.
+
+Write an algorithm to generate the track number.
+12	Given a binary string S consisting of only 0s and 1s, write an algorithm to find the number of different ways to get the longest consecutive sub-segment of 1s only. You are allowed to change any K number of 0s to 1s. If two ways lead to the same string, they are considered to be similar, not different.
+13	You are given a list of numbers.
+
+Write an algorithm to remove all the duplicate numbers of the list so that the list contains only distinct numbers in the same order as they appear in the input list.
+14	A transportation company has begun service in a new city. Their specialty is affordable fares. They have identified some pickup locations in the crowded areas of the city. Servicing these locations will yield them the most customers. To maximize their profitability, they wish to determine the minimum number of straight-line routes that will connect all the pickup locations.
+
+Write an algorithm to calculate the minimum number of straight-line routes that will cover all the pickup locations.
+15	You are given a list of integers and an integer K.
+
+Write an algorithm to find the number of elements in the list that are strictly less than K.
+16	An organization has assigned X engineers to work on a project. The engineers need a way to connect with each other and share data. Austin, the network administrator, has built a hierarchical network that allows an engineer to connect to two engineers at most in the network. He establishes all full duplex connections in the network (i.e. if there is a connection between A and B, then data can be transferred from A to B and from B to A). The strength of the signal decreases by one unit upon each transmission between directly connected engineer. Therefore, Austin needs to determine the minimum strength at which the signal must be sent so that it will reach everyone.
+
+Write an algorithm to help Austin find the minimum strength at which the signal must be sent so that the data will reach everyone.
+17	An alternate sort of a list consists of alternate elements (starting from the first position) of the given list after sorting it in an ascending order. You are given a list of unsorted elements.
+
+Write an algorithm to find the alternate sort of the given list.
+18	A digital machine generates binary data consisting of a string of characters of 0s and 1s. A maximum signal M in the data consists of the maximum number of either 1s or 0s that appear consecutively in the data. (However, M cannot occur at the beginning or end of the string.)
+
+Design a way to find the length of the maximum signal.
+19	The computer systems of N employees of a company are arranged in a row. A technical fault in the power supply has caused some of the systems to turn OFF while the others remain ON. Because of this, the employees whose systems are OFF are unable to work. The company does not like to see its employees sitting idle. So until the technical team can find the actual cause of the breakdown, the technical head Adam has devised a temporary workaround for the OFF systems at a minimum cost. Adam decides to connect all the OFF systems to the nearest ON system with the shortest possible length of cable. To make this happen, he calculates the distance of each system from the first system.
+
+Write an algorithm to help Adam find the minimum length of cable he needs to turn all the systems ON.
+20	In a connected graph, a path runs between every node. This path does not need to be an edge directly connecting the nodes. An adjacency matrix for a graph with n vertices is an n x n two-dimensional matrix with i j entry as 1 if there is an edge from the ith vertex to the jth vertex; otherwise it is 0.
+An undirected connected graph is given in the adjacency matrix form. Write an algorithm to determine whether it is a tree.
+For example, the result for the adjacency matrix given below should be 1 as it represents a tree.
+0 1 0 1
+1 0 1 0
+0 1 0 0
+1 0 0 0
+21	You are given two lists of different lengths of positive integers.
+
+Write an algorithm to count the number of elements that are not common to each list.
+22	Max does not like any line segment that he sees on the X-axis. Today, his brother drew N line segments on it. Max has a magical marker that can erase all the line segments that pass through a point on the X-axis when he places the marker on that point. For example, he wishes to erase two line segments — one with endpoints (1,0) and (4,0), and another with endpoints (3,0) and (7,0). He can clear both lines at once by placing the marker either at point (3,0) or (4,0) but he cannot do so if he places the marker anywhere else.
+
+Write an algorithm to find the minimum number of times Max must use the marker to clear the X-axis.
+23	Stephen runs a small library that has N number of student patrons. Each student member has a unique studentID. The library has a certain number of books on M different subjects. The teacher has given each student an individual assignment for which they will need to consult several different books. Prior to the assignment, the library had already issued some books to the students. The students may still take additional books from the library to complete their respective assignments. After completing their assignments, each student returns the books that they have borrowed. Only when a book has been returned, another student can borrow that book. When assigning books, Stephen begins with the student with the smallest studentID and then proceeds with the IDs in increasing order. When he reaches the student with the largest studentID, he then goes back to the student with the smallest studentID who has not yet borrowed the book. Then the process continues in this way. Stephen wishes to find the sequence of studentIDs most optimal for the students to complete their assignments.
+
+Write an algorithm to help Stephen find the sequence of studentIDs most optimal for the students to complete their assignments. If it is not possible for all the students to complete their assignments, output a list of length of 1 with content -1.
+24	In a car racing game, the participating cars must be registered online prior to the game. A car is assigned a registration number that is stored in a database. The registration number consists of digits from 0-9. The registration number can be positive or negative. A negative registration number denotes that the car is already registered online whereas a positive registration number denotes that the car is a newly registered car. Before the game starts, the system automatically assigns a track number to each car. The track number is the smallest permutation of the car registration number and never starts with zero.
+
+Write an algorithm to generate the track number.
+25	You are given a list of integers of size N.
+
+Write an algorithm to sort the first K elements (from list[0] to list[K-1]) of the list in ascending order and the remaining (list[K] to list[N-1]) elements in descending order.
+26	Sheldon is going to a book fair where all the books are star-rated. As he is interested in just two types of books, Horror and Sci-fi, so he would buy the books from these two categories only. He would want to buy at least one book from each category so as to maximize the total star-rating of his books. Also, the total price of the books should not exceed the amount of money that he can spend. The output is -1 if it is not possible to buy at least one book from both the categories with the money that he has.
+
+Write an algorithm to help Sheldon buy the books from both the categories.
+27	Given a route in a straight line. N buses operate between various bus stations. There is a workstation at the start of the route. The distances of the bus stations from the workstation are calculated. The transportation authority wishes to decrease the number of buses that it operates in the city. If any buses are found to have overlapping routes, then these buses will be replaced by a single bus. The authority wishes to determine how many buses will remain after the buses with overlapping routes have been eliminated.
+
+Write an algorithm to find how many buses will remain after the buses with overlapping routes have been eliminated.
+28	The assistant sales manager in the head office of the company ‘Jotuway’ receives lists of sales data from the regional offices scattered around the country. The assistant sales manager must compile the data and submit the list to the sales manager. The compiled list should be the longest palindromic list of sales data from the regional offices. He/she can add together any two consecutive elements of a list to form a single element. The result thus obtained can be reused further and this process can be repeated any number of times to convert the given list into a palindromic list of maximum length.
+
+Write an algorithm to help the assistant sales manager convert the given list into a palindromic list of maximum length.
+29	Allie is working on a system that can allocate resources to the applications in a manner efficient enough to allow the maximum number of applications to be executed. There are N number of applications and each application is identified by a unique integer ID (1 to N). Only M types of resources are available with a unique resourceID. Each application sends a request message to the system. The request message includes the information regarding the request time, the execution ending time, and the type of resource required for execution. Time is in the MMSS format where MM is minutes and SS is seconds.
+If more than one application sends a request at the same time then only one application will be approved by the system. The denied requests are automatically destroyed by the system. When approving the request, the system ensures that the request will be granted to the application in a way that will maximize the number of executions. The system can execute only one application at a time with a given resource. It will deny all other requests for that resource until the previous application has finished. Allie wants to know the maximum number of applications that have been executed successfully.
+
+Write an algorithm to help Allie calculate the maximum number of applications that are executed successfully by the system.
+30	Bob has to send a secret code S to his boss. He designs a method to encrypt the code using two key values N and M. The formula that he uses to develop the encrypted code is shown below:
+(((S %10) )%1000000007)
+
+Write an algorithm to help Bob encrypt the code.
+31	A virtual memory management system in an operating system uses Least Recently Used (LRU) cache. When a requested memory page is not in the cache and the cache is full, the page that was least recently used should be removed from the cache to make room for the requested page. If the cache is not full, then the requested page is added to the cache and considered to be the most recently used element in the cache. A given page should occur once in the cache at most.
+Given the maximum size of the cache and an array of page requests, calculate the number of cache misses. A cache miss occurs when a page is requested but is not found in the cache.
+32	An agent sends a secret message to headquarters containing the details of his project. He sends one soft copy to the agency’s computer (P) and sends one hard copy by fax to Roger, the technical head of the agency (Q). But during the transmission, noise in the network causes some bits of the data message P to get distorted. However, we know that Roger always matches the binary values of both messages and checks whether he can convert the message P to message Q by flipping the minimum number of bits.
+
+Write an algorithm to help Roger find the minimum number of bits that must be flipped to convert message P to message Q.
+33	A random game is being played in teams by N kids, each with strength Xi. The kids stand in a line with the first kid at position 1, the second at 2, and so on. A person draws M cards randomly from a box, each card containing a pair of numbers that represents the position of kids belonging to the same team. For example, if a card contains [1, 4] and another contains [4, 3], then the kids at positions [1, 4, 3] belong to the same team. The kids whose positions do not come up on any of the cards participate as one-person teams. Each team's power is determined by the sum of the strengths of the kids on the team. The team with the highest power wins.
+
+Design an algorithm that outputs the power of the winning team.
+34	There are N soldiers standing in a line, with IDs from 1 to N, in ascending order. They are participating in an exercise consisting of Q actions. During the ith action, the Major calls S numbers row and col . The soldiers at the row th and col th positions swap places; then the soldiers at (row +1)th and (col -1)th positions swap places, and so on until (row +m)< (col -m). Each of the soldier’s IDs will be covered in the range [row , col ] for at most one action.
+
+Write an algorithm to find the ID of the soldier at Kth position in the line after all the actions are completed.
+35	Arya is attempting to solve a math problem. In this problem, she is given a tree with N nodes, indexed from 1 to N where the root node is indexed as 1. Each node of the tree has a defined value. She wants to trace a path from one leaf to another leaf in such a way that will award her the maximum score for that path. The score of a path is defined as the product of node values along the path.
+
+Write an algorithm to find the maximum possible score.
+36	You are performing a science experiment in a research laboratory. You are attempting to form a new compound. A compound is made up of molecules and the mass of the compound is the sum of the masses of the molecules that compose the compound. For this experiment, you have identified four types of molecules: A, B, C and D. From these four molecules, A and B are monatomic, but C and D are diatomic. A monoatomic molecule is made up of one atom, but a diatomic molecule is made up of two atoms. So the mass of a diatomic molecule is twice its atomic mass while the mass of a monoatomic molecule is equal to its atomic mass. You have to form a compound X of mass Q using the
+maximum number of molecules.
+
+Write an algorithm to find the maximum number of molecules that can be used to form compound X.
+37	Today is Max's birthday. He has ordered a rectangular fruit cake which is divided into N x M pieces. Each piece of the cake contains a different fruit numbered from 1 to N*M. He has invited K friends, each of whom have brought a list of their favorite fruit choices. A friend goes home happy if the piece he receives is of his favorite fruit. Note that each friend can receive only one piece of cake.
+
+Design a way for Max to find the maximum number of friends he can make happy.
+38	A University has invited N alumni for a dinner. The dinner table has a circular shape. Each alumnus is assigned an invitation ID from 0 to N-1. Each alumnus likes exactly one fellow alumnus and will attend the dinner only if he/she can be seated next to the person he/she likes.
+
+Write an algorithm to find the IDs of the alumni in a lexicographical order so that maximum number of alumni attend the dinner. If more than one such seating arrangement exists, then output the one that is lexicographically smaller.
+39	Shortest Job First (SJF) is a system for scheduling task requests. Each task request is characterized by its request time (i.e., the time at which the task is submitted to the system) and its duration (i.e., the time needed to complete the task). When the SJF system completes a task it selects the task with the smallest duration to execute next If multiple tasks have the same smallest duration, SJF selects the task with the earliest request time. The waiting time for a task is the difference between the request time and the actual start time (i.e., the time that it spends waiting for the system to execute it). You may assume that the tasks arrive in such frequency that the system executes tasks constantly and is never idle.
+
+Given a list of request times and duration times, calculate the average task waiting time when scheduled using the Shortest Job First (SJF) algorithm.
+40	A prime number is divisible only by 1 and itself. The teacher writes a positive integer on the board.
+
+Write an algorithm to find all the prime numbers from 2 to the given positive number.
+41	You are given two strings containing only English letters.
+
+Write an algorithm to count the number of occurrences of the second string in the first string. (You may disregard the case of the letters.)
+42	In a state, N cities with unique city codes from 1 to N are connected by N-1 roads. The road network is in the form of a tree of which each road connects two cities. A path is a road, or a combination of roads, connecting any two cities. Each road has a toll booth that collects a toll equal to the maximum number of paths of which that particular road is part. The state transportation authority wishes to identify the road on which the maximum toll revenue is collected.
+
+Write an algorithm to help the transportation authority identify the pair of cities connected by the road on which the maximum toll revenue is collected. The output should be sorted in increasing order. If more than one road collects the same total revenue, then output the pair of cities that have the smaller city code.
+43	A colony of eight houses, represented as cells, are arranged in a straight line. Each day every cell competes with its adjacent cells (neighbours). An integer value of 1 represents an active cell and value of 0 represents an inactive cell. If both the neighbours are either active or inactive, the cell becomes inactive the next day; otherwise it becomes active on the next day. The two cells on the ends have a single adjacent cell, so the other adjacent cell can be assumed to be always inactive. Even after updating the cell state, its previous state is considered for updating the state of other cells.
+The cell information of all cells should be updated simultaneously.
+
+Write an algorithm to output the state of the cells after the given number of days.
+44	In an organization, N employees with employee IDs from 1 to N, are working in different teams. Each employee shares a bond of great understanding with his/her fellow team members. Each employee is assigned an integer X that represents the employee’s efficiency. The sum of efficiencies of all the employees indicates the reputation of the organization. Edwin is appointed manager of the organization for Q days. Edwin, being short-tempered, fires one employee each day. Because the team members have a close relationship, K colleagues of the fired employee resign in protest. (These K colleagues have the least efficiency of the remaining team members.) Kevin is the head of the database management system and has to update the reputation of the organization at the end of each day.
+
+Write an algorithm to help him determine the reputation of the organization at the end of each day for Q
+number of days.
+45	In a city there are N houses. Noddy is looking for a plot of land in the city on which to build his house. He wants to buy the largest plot of land that will allow him to build the largest possible house. All the houses in the city lie in a straight line and all of them have a house number and a second number indicating the position of the house from the entry point in the city. Noddy wants to find the houses between which he can build the largest possible house.
+
+Write an algorithm to help Noddy find the house numbers between which he can build his largest possible house.
+46	Emerson is very fond of strings, and he keeps trying to reverse them. His mother gives him two binary strings and asks him to convert the binary string str1 into str2 by applying the following rules:
+Step 1: Reverse any substring of length 2 (of str1) and get str1' ( str1 != str1' ).
+Step 2: Reverse any substring of length 3 (of str1') and get str1'' ( str1' != str1'' ).
+Step 3: Reverse any substring of length 4 (of str1'') and get str1''' ( str1'' != str1''' ) .
+Step 4, Step 5 and so on.
+
+Write an algorithm to help Emerson convert the binary string str1 into str2, in the minimum number of steps.
+47	Dr. Victor Frankenstein has quit the monster creation business. Nuclear energy now strikes his fantasy. He has created a fission reactor that takes radioactive materials in a liquid state. The capacity of the reactor is 'V' gallons. He has 'N' vials of radioactive liquids, each with some mass and some volume. Some units of energy are produced when a liquid is poured into the reactor. Victor would like to maximize the energy output. However, there is a catch. Upon studying the physics and history of atomic elements, he realizes that the combined mass of the radioactive liquids inside the reactor must not exceed a certain critical mass 'M' or else the reaction would get out of control and cause a violent explosion.
+
+Write an algorithm that will help Victor get the maximum energy from the reactor without losing his life.
+48	The city bus stations are located at equal distances (unit distance) from each other along a straight road. Each station has a unique station ID. The buses do not travel to all of the bus stations. The highway administration needs to determine the total distance that the buses cover.
+
+Given the IDs of the bus stations that have a bus operating between them, write an algorithm to help the
+administration find the distance covered by all the city buses.
+49	A square matrix A[1..n][1..n] is called palindromic if A[i][j] = A[n + 1 - i][n + 1 - j] for all 1 ≤ i, j ≤ n.
+
+Given a matrix inputMat[1..N][1..M], find the number of elements in its largest palindromic square sub-matrix.
+50	Mr. Woods, an electrician for Timberland city, has made some faulty connections on eight street lights. The errors cause a street light to go OFF if the street lights adjacent to that light were both ON (represented as 1) or both OFF (represented as 0) on the previous night. Otherwise, the light will go ON as normal. The two street lights at the end of the road have only a single adjacent street light, so the light at the end can be assumed to be always OFF. The state of the lights on a particular day is considered for the following day, not for the same day. Because of this fault, people are having difficulty driving on the road at night. They have filed a complaint to the Head of the Federal Highway Administration. Based on this complaint the head has ordered a report of the state of street lights after M days.
+
+Write an algorithm to output the state of the street lights after the given M days.
+51	Adison works for a Client servicing company whose head office is located in zone ‘1’ in a city. He has to provide service to the customer in a zone and return back to head office after servicing each complaint. Since he is not well, he likes to optimize the rest time after each service he provides. Hence, he tries to locate the minimum distance between the head office and the target zone. There are N zones, numbered 1 to N, connected by M bidirectional roads such that every zone is connected to the head office either directly or via any other zone. Adison is given a list of M pairs of two zones [A, B] and the time C needed to reach from zone A to zone B. To service Q complaints in the order in which they have been assigned, he is given the name of the zone X and the time limit K in which he can service a complaint to that zone and return to the head office. If he is able to find the shortest route from zone ‘1’ and thus save time, then he can take good rest. If K units of time are not sufficient to visit the zone X and return back to the head office, he will not be able to service a complaint in that zone and the rest time will also be zero.
+
+Write an algorithm to compute Adison’s maximum rest time in each service for Q complaints given in a day.
+52	The vowels of the English alphabet are (a, e, i, o, u, A, E, I, O, U).
+
+Write an algorithm to eliminate all vowels from a given string.
+53	An airline company wishes to establish flight service in a new country. The company wants to provide flight service in such a way that will cover all the cities in the country with the minimum number of flights. Given the coordinates of all the cities in the country, the company has to determine the minimum number of straight routes necessary to cover all the cities.
+
+Write an algorithm to help the company find the minimum number of straight routes necessary to cover all the cities.
+54	Martin’s father goes for a jog every morning. Martin follows him several minutes later. His father starts at a position that is X1 meters away from their home and runs rectilinearly at a constant speed of V1 meters per step for N steps. Martin is standing at X2 meters away from his home. He wonders how fast he must run at some constant speed of V2 meters per step so as to maximize F, where F equals the number of his father's footsteps that Martin will land on during his run. It is given that the first step that Martin will land on, from his starting position, will have been landed on by his father. Note that if more than one prospective velocity results in the same number of maximum common steps, output the highest prospective velocity as V2.
+
+Write an algorithm to help Martin calculate F and V2.
+55	An internet service provider company Si-Fi has won a city tender to lay the wire cables for data transmission between N given routes. There is a chance that the two routes may intersect at some point. Because intersecting wires can cause signal distortion, the company decides to place a distortion avoidance device at all such locations. Find the number of devices the company needs to place.
+
+Write an algorithm to find the number of distortion avoidance devices the company needs to place.
+56	A company sells its products at N outlets. All the outlets are connected to each other by a series of roads. There is only one way to reach from one outlet to another. Each outlet of the company has a unique outlet ID. Whenever the inventory of a certain product reaches a minimum limit then these K outlets make a request for extra inventory. The company sends the requested products from its warehouse to the outlets. In order to save on fuel, the warehouse supervisor directs the driver Mike to deliver the products to the outlets along the shortest and most direct path possible, without traveling any single road twice.
+
+Write an algorithm to help Mike deliver his inventory to the maximum number of outlets without traveling any road twice.
+57	Dr. Jackson, a researcher, wishes to perform an experiment. He has a variety of toxic chemicals. Each chemical has some vapor rate. When two chemicals are mixed, then the vapor rate of the mixture is the multiplication of their respective vapor rates. Dr. Jackson picks two equal-sized sets of non-overlapping, consecutively-placed chemicals from a series of chemicals in his lab. He reverses the positions of the chemicals in the second set. He then mixes each chemical from the first set with the correspondingly-placed chemical of the second set. The total vapor rate at the end of the experiment is the sum of the products of the respective vapor rates of the chemicals that he mixed from both sets. If the total vapor
+rate is negative, he will not pick any set.
+
+Write an algorithm to find the maximum vapor rate obtainable after the experiment.
+58	Emma wishes to give her father a bouquet for his birthday. She asks for help from her mother Rosy. Rosy gives N flower sticks numbered 1 to N to Emma and tells her to arrange them in the bouquet in a particular order. She asks Emma to arrange the first K flower sticks in the order of increasing length and the remaining sticks in the order of decreasing length.
+
+Write an algorithm to find the final arrangement of the flower sticks in the bouquet.
+59	You are given a list of numbers.
+
+Write an algorithm to remove all the duplicate numbers of the list so that the list contains only distinct numbers in the same order as they appear in the input list.
+60	Write an algorithm to find the number of occurrences of needle in a given positive number haystack.
+61	In an online word recognition game for kids, the user needs to find the number of times the given word occurs in the sentence. Both the given word and the sentence displayed on the user interface consist of letters from the English alphabet only and are case insensitive (i.e., â€˜toddlerâ€™ is same as â€˜Toddlerâ€™). Neither the word nor the sentence contain any white-spaces or special symbols.
+
+Write an algorithm to print the number of times the given word appears in the sentence.
+62	An employee in an organization has begun working on N projects (numbered 0 to N-1). Each week he/she can work on a single module of one of the projects. The modules that are chosen on any two successive weeks should come from different projects. A project i can have at most Ci modules. The modules of the projects are such that a module is completed in a week.
+
+Write an algorithm to determine the number of weeks the employee can work on projects following the abovementioned rules.
+63	Mitchell has invented a machine that outputs the most frequently occurring characters in a string that lie in the range [L, R]. The machine accepts a series of characters and asks the user to input two numbers, L and R. The machine outputs the characters for all the pairs of [L, R] values the user provides.
+
+Write an algorithm to help Mitchell find the output for all the inputs he provides.
+64	A state has a number of city clusters in which the cities are connected by a network of roads. These roads are bidirectional (i.e., traffic can move in either direction). There are no connections between clusters. Within a cluster, assume that two cities are connected by one road at most.
+
+Write an algorithm to determine the total number of clusters of internally connected cities for one such network of cities and roads.
+65	Design a way to sort the list of positive integers in the descending order according to frequency of the elements. The elements with higher frequency come before those with lower frequency. Elements with the same frequency come in the same order as they appear in the given list.
+66	A state consists of N cities numbered from 0 to N-1. All the roads in the state are bidirectional. Each city is connected to another city by one direct road only. A magician travels to these cities to perform shows. He knows a magic spell that can completely eliminate the distance between any two directly connected cities. But he must be very careful because this magic spell can be performed only K number of times.
+
+Write an algorithm to find the length of the shortest route between two given cities after performing the magic spell K number of times. The output is -1 if no path exists.
+67	A virtual memory management system in an operating system uses First-In-First-Out (FIFO) cache.
+When a requested memory page is not in the cache and the cache is full, the page that has been in the cache for the longest duration is removed to make room for the requested page. If the cache is not full, then the requested page can simply be added to the cache. A given page should occur once in the cache at most. Given the maximum size of the cache and an array of page requests, calculate the number of cache misses. A cache miss occurs when a page is requested but is not found in the cache. Initially, the cache is empty.
+68	On a social networking site, each user can have a group of friends. Each user possesses a unique profile ID. A company wants to promote its product on the social networking site in a particular way. It plans to give rewards to any user who promotes its product on his/her wall. The company will give extra reward points to users who refer other users. The company will ask one of the users to promote its product by posting the product message on his/her wall. The user can then share this message with their friends, asking them to post on their walls as well. The company will share the promo message with the user in such a way that the promo message is posted on the maximum number of walls.
+
+Write an algorithm to help the company find the userID of the user to whom they should send the promo request so that the request may reach the maximum number of walls.
+69	A space organization has N satellites in orbit. The satellites are assigned IDs from 0 to N-1. A satellite can transfer data to any other satellite that lies within its bandwidth range. A team at organization is working on a project involving satellite communications. In this project, they wish to transfer data from the main satellite with ID 0 to all the other satellites. But because the transfer of data requires an enormous
+amount of power, a satellite can transfer data to only one other satellite at a time. Then, the satellite can connect to the server at organization which will help to connect this satellite to other satellites near it. Only a fixed number of satellites can be in the bandwidth range of a satellite at a time. The team wishes to determine the minimum number of iterations of data transfer necessary to connect all the satellites.
+
+Write an algorithm to help the team to determine the minimum number of iterations of data transfer necessary to connect all the satellites.
+70	In a town, the houses are marked with English letters. A town committee wants to renovate each house. Because funds are limited, they decide to renovate only the houses marked with vowels. The committee head gives the list of houses to the members and asks them to identify the houses that will not be renovated.
+
+Write an algorithm to help the committee members find the list of houses that will not be renovated.
+71	The manager of the grocery company tagGrocery wishes to identify which products are most frequently purchased by the customers. He selects N customers that purchase combo bags of products. Each combo bag consists of M products and each product is labeled with a productID. He needs to find the productIDs of the products that are purchased by all the N customers in common.
+
+Write an algorithm to help the manager find the lexicographically sorted productIDs of the products that are most frequently purchased by all the N customers.
+72	A distributor distributes energy drinks in a 34 oz can to customers who each have a unique ID. He distributes the drink according to the demand for the drink. He has developed a system that handles all the transaction queries of the store. The system will handle two types of queries (i.e. query 1 and query 2). The first query determines if the customer’s ID has already been logged, and if so, it adds the quantity of the new sale to the previous quantity and updates the record and if not logged in before, then it will make a fresh entry. The query 2 retrieves the quantity of cans purchased by the given range of the customer ID. At the end of the day, the distributer must submit a report for all the type 2 queries.
+
+Write an algorithm to help the distributer find the answer for all the type 2 queries.
+73	The city authorities need to know the number of houses in a residential area for future planning. The area is depicted in an aerial view and divided into an N x M grid. If a particular grid cell contains some part of the house roof, then it is given a value 1. If the cell is vacant, then it is given a value 0. Clusters of adjacent grid cells with value 1 represent a single house. Diagonal grids with value 1 do not represent the same house.
+
+Write an algorithm to find the total number of houses in the area.
+74	Mary, a physical education teacher, divides her students into different groups and assigns an ID to each group. For the group ID, she asks the students to stand in a queue. Each student in the class has a performance factor (PFR). She assigns scores to the students in an unusual way based on their PFR. She gives a score of 5 to a student behind whom is standing at least one student with a higher PFR, behind whom is standing at least one student with a smaller PFR. Next, she gives a score of 10 to a student behind whom is standing a student with a higher PFR, behind whom no student with smaller PFR is standing. Finally, she gives a score of 15 to a student behind whom is standing no student with a higher PFR. The group ID is the sum of scores of the students in the group.
+
+Write an algorithm to find the group ID of a group of students.
+75	A mouse is placed in a maze. There is a huge chunk of cheese somewhere in the maze. The maze is represented as an N x M grid of integers where 0 represents a wall, 1 represents the path where the mouse can move and 9 represents the chunk of cheese. The mouse starts at the top left corner at (0,0).
+
+Write an algorithm to output 1 if the mouse can reach the chunk of cheese, else output 0.
+76	Stephen is doing an internship in a company for N days. Each day, he may choose either an easy task or a difficult task. He may also choose to perform no task at all. He chooses a difficult task on days when and only when he did not perform any work the previous day. The amount paid by the company for both the easy and difficult tasks can vary each day, but the company always pays more for difficult tasks.
+
+Write an algorithm to help Stephen earn the maximum salary.
+77	A student must solve an entire workbook of problems related to finding the area of intersection of two circles. Because the problems are all very similar, the student decides to write a program that can solve all these similar problems.
+78	An alien mothership is trying to communicate with Earth. It follows a particular handshake mechanism to initiate the conversation. It sends a stream of numbers to Earth and expects a particular set of numbers in return, to complete the handshake. If the stream contains N numbers, then Earth needs to return the top M numbers from the stream, such that those M numbers contain the highest number of 1s when represented in their binary form. If two numbers contain the same number of 1s in their binary form, the larger number (in magnitude) should be selected first.
+
+Design an algorithm that will help carry out this communication.
+79	A transportation company wishes to begin service in the city of Nazeriana. The company has a base location where it parks all its vehicles. They have identified some pickup locations where the vehicles will collect passengers. Now the company wishes to identify the straight line routes from the base location to the pickup locations. They wish to minimize the number of routes while ensuring that all the pickup locations are covered.
+
+Write an algorithm to help the company identify the minimum number of straight line routes from the base location to the pickup locations, covering every pickup location.
+80	A big bio-research project is going on. The scientists involved are testing a new serum. They are performing initial research on animals, noting the effects of the serum, before attempting trials on actual human beings. The main criterion in their test is body temperature. If body temperature is above or below a certain parameter after receiving the serum, the scientists will note it as zero. If it is within the normal level, they will note it as one. After completing all the readings they can change the abnormal body temperatures back to a normal level but only for K times, so that the possible number of consecutive normal readings is maximised. The scientists wish to find the number of different ways to change the readings so as to get the maximized consecutive normal reading. You are given all the readings of the scientists.
+
+Write an algorithm to find how many consecutive times the temperature reading can be of a normal level.
+81	You are given a non-empty list of positive integers. You can sum any two consecutive elements to form a single element. The result thus obtained can be reused further and this process can be repeated any number of times to convert the given list into a palindromic list of maximum length.
+
+Write an algorithm to convert this list into a palindromic list of maximum length.
+82	The government of UtmostLand wants to create the highest and strongest pyramid. The civil engineer has ordered a special type of cuboid rock block. These blocks were very costly, so the government approved the purchase of only N number of rock blocks. The blocks are of various widths, and each block has a unit height. The design team will arrange these blocks in such a way that the total width and number of blocks at one level is less than that of the level below it. With these conditions, the team must construct the pyramid to reach the highest height in accordance with the government decree.
+
+Write an algorithm to find the height of the pyramid that the team can build.
+83	The city authorities conduct a study of the houses in a residential area for a city planning scheme. The area is depicted in an aerial view and divided into an N x M grid. If a grid cell contains some part of a house roof, then it is assigned the value 1; otherwise, the cell represents a vacant plot and is assigned the value 0. Clusters of adjacent grid cells with value 1 represent a single house. Diagonally placed grids with value 1 do not represent a single house. The area of a house is the number of 1s that it spans.
+
+Write an algorithm to find the area of the largest house.
+85	A convention center is hosting a meeting of large firms, which N number of CEOs will be attending. Each CEO is assigned an invitation ID from 0 to N-1. Each CEO has some favorite CEO whom they like. They will attend the meeting only if they can be seated next to the person they like. You are asked to plan this seating arrangement
+
+Write an algorithm to find the maximum number of CEOs who will attend the meeting.
+86	A pizza shop makes serves both vegan pizza and meat pizza. Customers place N orders at the shop. Their order number is printed on their bill. The shop displays K out of N orders (both vegan and meat) on their display screen at any given time. The pizza shop is very famous and they receive many orders. To avoid confusion, vegan pizza orders are represented by positive numbers and meat pizza orders are represented by negative numbers on the screen. The orders are served in the order in which they are displayed on the screen. Each time an order is ready, its number is removed from the display screen and a new order is added to the display at the end of the list. A couple has arrived with their child Billy. Billy is a very naughty child. To keep him occupied, his parents tell him to make a list of the first meat pizza that appear in each set of K orders displayed on the shop’s display screen.
+
+Write an algorithm to help Billy make a list of the first meat based pizza order numbers displayed on the screen each time an order is delivered to a customer.
+87	Mary, a physical education teacher, divides her students into different groups and assigns an ID to each group. For the group ID, she asks the students to stand in a queue. Each student in the class has a performance factor (PFR). She assigns scores to the students in an unusual way based on their PFR. She gives a score of 5 to a student behind whom is standing at least one student with a higher PFR, behind whom is standing at least one student with a smaller PFR. Next, she gives a score of 10 to a student behind whom is standing a student with a higher PFR, behind whom no student with smaller PFR is standing. Finally, she gives a score of 15 to a student behind whom is standing no student with a higher PFR. The group ID is the sum of scores of the students in the group.
+
+Write an algorithm to find the group ID of a group of students.
+88	Every member of a family owns at least one mobile phone. The head of the family keeps track of all the phone accounts. She has sketched out a tree figure wherein each node of the tree represents a member of the family and the value of the node represents the number of phones owned by that person. The head of the family assigns herself to be the root of this tree. She wishes to find the maximum number of phones owned by any single generation of family members. [She wishes to find which generation of the family owns the most phones.] All the members who belong to the same level of the tree are considered as belonging to the same generation.
+
+Write an algorithm to find the maximum number of phones owned by a single generation of family members.
+89	Peter has two strings of the same length. The first string is fixed and the second string is rotatable. In the left rotation, the first character is removed and added to the end of the string. In the right rotation, the last character is removed and added to the start of the string. Peter is interested in knowing the longest common prefix of both the strings.
+
+Write an algorithm to help Peter find the minimum number of rotations required to find the longest common prefix. If no prefix is common then output -1.
+90	An IT park consists of similar buildings. During the initial construction of the IT park, the telecom company “Nazania Communication” used some of the buildings for its servers. Now that the IT park has been fully developed, all the buildings need internet connections. The telecom company wants to connect each building to the nearest building where a server has already been set. To plan for this, the company creates a rectangular aerial view of the buildings in the IT park in the form of a M*N grid. Each cell of the grid represents a building. For all the buildings that do not have servers, the company wants to find the minimum number of buildings (horizontally and/or vertically) that separate the buildings that need internet connections from buildings that have servers.
+
+Write an algorithm to find the minimum number of buildings (horizontally and/or vertically) that separate the buildings that need internet connections from buildings that have servers.
+91	William is the owner of a candy shop. He uses a machine which takes few minutes to make one box of candies ready for delivery. He receives an order for some boxes of candy which he needs to deliver as soon as possible. He has a fixed amount of money to spend in order to make and deliver these boxes. To complete the order, he can either purchase candy boxes from one of the shops or he can purchase a new efficient machine or he can try to employ both the options together. If he purchases a new machine, will no longer have access to the old machine.
+
+Write an algorithm to find the minimum time in which William can deliver the order.
+92	Mr. Henry is saving money to buy a new car. His old car gets low gas mileage. Moreover, its fuel efficiency has diminished over time. Presently, it takes one gallon of gasoline to go 1 mile of distance. He needs to drive to his office which is at D distance from his home. On his way to the office, there are N gas stations. Each gas station can only sell a specific amount of gasoline (in gallons) based on a limit determined by the government. (Note that in order to keep running the car it must have some gasoline in it at all times.)
+
+Write an algorithm to help Mr. Henry figure out the minimum number of gas stations at which he should stop to successfully reach his office. If it is not possible to reach the office, the output will be -1.
+93	Josh went to the market to buy N apples. He found two shops, A and B, that sold apples in lots. He can buy any number of complete lots but he cannot buy loose apples. He is confused about the price and needs help to calculate the minimum cost of exactly N apples.
+
+Write an algorithm for Josh to calculate the minimum cost of exactly N apples.
+94	Gregor is a salesperson employed in the city of Cartesia, which is an infinite plane, the locations of which follow the Cartesian coordinate system. There are N+1 retailers in the city. N retailers, with positions 1 to N, have the coordinates (X , 0), (X , 0) to (X , 0). The head retailer, with position N+1, is located at the coordinate (X , Y ). Gregor wishes to find the shortest possible path from a given K retailer to all the other retailers in the city. He may visit a retailer twice along his route. The distance between any two retailers is the same as the distance between two points in the Cartesian coordinate system.
+
+Write an algorithm to help Gregor to find the minimum distance of a path that will allow him to visit all the given retailers.
+95	Given a matrix A[1..N][1..M] of integers, the product of a submatrix of A is the product of all the elements of the submatrix.
+
+Write an algorithm to find the number of non-empty submatrices that contain the top left element of
+matrix A (i.e. submatrices B[1..X][1..Y] for 1 ≤ X ≤ N, 1 ≤ Y ≤ M) with a product ≤ K.
+96	Tim, a seventh grade student, is introduced to the concept of lines in basic geometry class. He applies this concept in real life. If he considers his house as one point and his friend Bill’s house as another point, he can draw a line between these two points. Similarly, if the houses of all his friends are considered as different points, he can draw multiple lines with his own house as the common point in each line. By taking his school as the reference, Tim marks the coordinates of his N friends' houses.
+
+Write an algorithm to help Tim that takes the coordinates of his house (x , y ) and his friends' houses (x , y ) and outputs the number of unique lines that can be drawn with Tim’s house as the common point in each line.
