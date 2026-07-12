@@ -1,4 +1,4 @@
-package rocks.ditto.leetcode.medium;
+package src.rocks.ditto.leetcode.medium;
 
 import java.util.ArrayList;
 import java.util.List;
