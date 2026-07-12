@@ -1,0 +1,23 @@
+{
+    "java.project.sourcePaths": [
+        "java"
+    ],
+    "java.project.referencedLibraries": [],
+    "java.project.outputPath": "java/out",
+    "java.autobuild.enabled": true,
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "java.import.exclusions": [
+        "**/node_modules/**",
+        "**/.git/**"
+    ],
+    "editor.suggestSelection": "first",
+    "java.debug.settings.hotCodeReplace": "auto",
+    "java.signatureHelp.enabled": true,
+    "java.completion.importOrder": [
+        "java",
+        "javax",
+        "org",
+        "com",
+        ""
+    ]
+}

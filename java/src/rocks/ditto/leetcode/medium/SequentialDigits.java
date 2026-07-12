@@ -29,4 +29,10 @@ class SequentialDigits {
         }
         return result;
     }
+
+    public static void main(String[] args) {
+        SequentialDigits solution = new SequentialDigits();
+        System.out.println(solution.sequentialDigits(100, 300)); // 输出: [123, 234]
+        System.out.println(solution.sequentialDigits(1000, 13000)); // 输出: [1234, 2345, 3456, 4567, 5678, 6789, 12345]
+    }
 }
